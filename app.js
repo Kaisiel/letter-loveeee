@@ -27,6 +27,7 @@ noBtn.addEventListener("click", dodge);
 
 const dogImage = document.querySelector("#dogImage");
 const heartRainSound = document.querySelector("#heartRainSound");
+heartRainSound.volume = 0.25;
 
 yesBtn.addEventListener("click", () => {
     playHeartRainSound();
@@ -191,7 +192,7 @@ letterEnvelope.addEventListener("click", () => {
 
     letterEnvelope.disabled = true;
     letterOverlay.classList.add("is-revealing");
-    playSelectedTrack();
+    playNextQueuedTrack();
 });
 
 function closeLetter() {
@@ -213,6 +214,27 @@ const expandedPhoto = document.querySelector("#expandedPhoto");
 const closePhotoButton = document.querySelector("#closePhoto");
 const photoCaption = document.querySelector("#photoCaption");
 let activePhotoFrame = null;
+
+function getPhotoCaptionText() {
+    return (photoCaption.innerText ?? photoCaption.textContent ?? "")
+        .replace(/\r\n?/g, "\n");
+}
+
+function saveActivePhotoCaption() {
+    if (!activePhotoFrame) return;
+
+    const caption = getPhotoCaptionText();
+    activePhotoFrame.dataset.caption = caption;
+
+    try {
+        localStorage.setItem(
+            `photo-caption:${activePhotoFrame.dataset.photo}`,
+            caption
+        );
+    } catch (error) {
+        console.warn("Could not save the photo note.", error);
+    }
+}
 
 const ourPhotos = [
     "911662388_2223770698353199_9207019283401826295_n.jpg",
@@ -254,7 +276,12 @@ function openPhoto(frame) {
     activePhotoFrame = frame;
     expandedPhoto.src = frame.dataset.photo;
     expandedPhoto.alt = frame.querySelector("img").alt;
-    const savedCaption = localStorage.getItem(`photo-caption:${frame.dataset.photo}`);
+    let savedCaption = null;
+    try {
+        savedCaption = localStorage.getItem(`photo-caption:${frame.dataset.photo}`);
+    } catch (error) {
+        console.warn("Could not load the saved photo note.", error);
+    }
     photoCaption.textContent = savedCaption ?? frame.dataset.caption ?? "";
     photoOverlay.setAttribute("aria-hidden", "false");
     photoOverlay.classList.add("is-open");
@@ -262,15 +289,15 @@ function openPhoto(frame) {
 }
 
 photoCaption.addEventListener("input", () => {
-    if (!activePhotoFrame) return;
-    activePhotoFrame.dataset.caption = photoCaption.textContent;
-    localStorage.setItem(
-        `photo-caption:${activePhotoFrame.dataset.photo}`,
-        photoCaption.textContent
-    );
+    saveActivePhotoCaption();
 });
 
+photoCaption.addEventListener("blur", saveActivePhotoCaption);
+
+window.addEventListener("pagehide", saveActivePhotoCaption);
+
 closePhotoButton.addEventListener("click", () => {
+    saveActivePhotoCaption();
     photoOverlay.classList.remove("is-open");
     photoOverlay.setAttribute("aria-hidden", "true");
     expandedPhoto.src = "";
@@ -308,15 +335,102 @@ const secondsPerTurn = 5;
 const seekInstructions =
     "Drag clockwise to fast-forward or counterclockwise to rewind.";
 
-const tracks = [{
-    title: "Secret Door",
-    url: "Secret%20Door.mp3"
-}];
-let currentTrackIndex = 0;
+const bundledSongFiles = [
+    "A Piece of You.mp3",
+    "Adie - Tahanan (Official Lyric Video).mp3",
+    "Anything You Want.mp3",
+    "Ben&Ben - Araw-Araw Official Lyric Video.mp3",
+    "Daniel Caesar - Best Part (Audio) ft. H.E.R.mp3",
+    "d4vd - Here With Me (Official Audio).mp3",
+    "dwta - Padaba Taka (Lyric Video with Tagalog Translation).mp3",
+    "Eliza Maturan - Museo (Official Music Video).mp3",
+    "Hindi Ako Mawawala (c) El Manu (Official Lyric Video).mp3",
+    "I Won't Give Up.mp3",
+    "Ikaw Lang Patutunguhan.mp3",
+    "LANY - you! (official video).mp3",
+    "Last Night on Earth.mp3",
+    "Libu-Libong Buwan (Uuwian) - Kyle Raphael (Lyric Video).mp3",
+    "Magnolia.mp3",
+    "Make It With You - Ben&Ben (Lyrics).mp3",
+    "Moira & Jason - Ikaw At Ako (Lyric Video).mp3",
+    "NOBITA - IKAW LANG Official Lyric Video.mp3",
+    "NOBITA - UNANG SAYAW (feat. Fayeed Tan) OFFICIAL LYRIC VIDEO.mp3",
+    "Nahanap Kita.mp3",
+    "New West - Those Eyes (Chapter 1).mp3",
+    "Paul Partohap - P.S. I LOVE YOU (Lyric Video).mp3",
+    "SUGARCANE - Leonora (Official Lyric Video).mp3",
+    "Sa Bawat Sandali - Amiel Sol (Official Music Video).mp3",
+    "Secret Door.mp3",
+    "THANK YOU 4 LOVIN' ME (Lyric Video).mp3",
+    "TJ Monterde - Ikaw at Ako (Lyrics).mp3",
+    "TJ Monterde - Mahika - (Official Lyric Video).mp3",
+    "Tahanan (c) El Manu [Official Audio].mp3",
+    "The 1975 - fallingforyou.mp3",
+    "wave to earth - love. (Official Lyric Video).mp3",
+    "Yahya - keepyousafe (Lyric Video).mp3",
+    "Your Universe.mp3",
+    "Zack Tabudlo - Give Me Your Forever (Lyric Video).mp3"
+];
+let nextTrackId = 0;
+const tracks = bundledSongFiles.map((fileName) => ({
+    id: nextTrackId++,
+    title: fileName.replace(/\.mp3$/i, ""),
+    url: encodeURIComponent(fileName)
+}));
+const secretDoorTrackId = tracks.find((track) => track.title === "Secret Door").id;
+let currentTrackId = null;
+let shuffledTrackQueue = [];
+let lastPlayedTrackId = null;
 let previousDiscAngle = 0;
 let discRotation = 0;
 let draggedDisc = false;
 let pendingSeek = 0;
+
+function renderMusicPlaylist() {
+    const selectedTrackId = currentTrackId;
+    const sortedTracks = [...tracks].sort((first, second) =>
+        first.title.localeCompare(second.title, undefined, { sensitivity: "base" })
+    );
+
+    musicPlaylist.replaceChildren();
+    sortedTracks.forEach((track) => {
+        const option = document.createElement("option");
+        option.value = String(track.id);
+        option.textContent = track.title;
+        musicPlaylist.appendChild(option);
+    });
+
+    if (selectedTrackId !== null) {
+        musicPlaylist.value = String(selectedTrackId);
+    }
+}
+
+function refillTrackQueue() {
+    shuffledTrackQueue = tracks.map((track) => track.id);
+
+    for (let index = shuffledTrackQueue.length - 1; index > 0; index -= 1) {
+        const swapIndex = Math.floor(Math.random() * (index + 1));
+        [shuffledTrackQueue[index], shuffledTrackQueue[swapIndex]] =
+            [shuffledTrackQueue[swapIndex], shuffledTrackQueue[index]];
+    }
+
+    if (shuffledTrackQueue.length > 1 &&
+        shuffledTrackQueue[0] === lastPlayedTrackId) {
+        const swapIndex = 1 + Math.floor(Math.random() * (shuffledTrackQueue.length - 1));
+        [shuffledTrackQueue[0], shuffledTrackQueue[swapIndex]] =
+            [shuffledTrackQueue[swapIndex], shuffledTrackQueue[0]];
+    }
+}
+
+function playNextQueuedTrack() {
+    if (shuffledTrackQueue.length === 0) {
+        refillTrackQueue();
+    }
+
+    const trackId = shuffledTrackQueue.shift();
+    selectTrack(trackId, true);
+    playSelectedTrack();
+}
 
 function playSelectedTrack() {
     musicPlayer.play().catch(() => {
@@ -324,6 +438,9 @@ function playSelectedTrack() {
             `Could not play ${musicTitle.textContent}. Click the disc to try again.`;
     });
 }
+
+renderMusicPlaylist();
+selectTrack(secretDoorTrackId);
 
 addMusicButton.addEventListener("click", () => {
     musicFiles.click();
@@ -334,36 +451,42 @@ musicFiles.addEventListener("change", () => {
 
     files.forEach((file) => {
         const track = {
+            id: nextTrackId++,
             title: file.name.replace(/\.[^.]+$/, ""),
             url: URL.createObjectURL(file)
         };
-        const option = document.createElement("option");
-
-        option.value = String(tracks.length);
-        option.textContent = track.title;
         tracks.push(track);
-        musicPlaylist.appendChild(option);
+        if (shuffledTrackQueue.length > 0) {
+            const insertIndex = Math.floor(
+                Math.random() * (shuffledTrackQueue.length + 1)
+            );
+            shuffledTrackQueue.splice(insertIndex, 0, track.id);
+        }
     });
 
+    renderMusicPlaylist();
     musicFiles.value = "";
 });
 
 musicPlaylist.addEventListener("change", () => {
-    const index = Number(musicPlaylist.value);
-    if (Number.isInteger(index) && tracks[index]) {
-        selectTrack(index);
+    const trackId = Number(musicPlaylist.value);
+    if (Number.isInteger(trackId) && tracks.some((track) => track.id === trackId)) {
+        selectTrack(trackId);
     }
 });
 
-function selectTrack(index) {
-    const track = tracks[index];
+function selectTrack(trackId, fromQueue = false) {
+    const track = tracks.find((candidate) => candidate.id === trackId);
     if (!track) return;
 
+    if (!fromQueue) {
+        shuffledTrackQueue = shuffledTrackQueue.filter((queuedId) => queuedId !== trackId);
+    }
     musicPlayer.pause();
     musicPlayer.src = track.url;
     musicPlayer.load();
-    currentTrackIndex = index;
-    musicPlaylist.value = String(index);
+    currentTrackId = trackId;
+    musicPlaylist.value = String(trackId);
     musicTitle.textContent = track.title;
     musicStatus.textContent = seekInstructions;
     musicDisc.disabled = false;
@@ -492,6 +615,7 @@ musicPlayer.addEventListener("error", () => {
 });
 
 musicPlayer.addEventListener("play", () => {
+    lastPlayedTrackId = currentTrackId;
     musicDisc.classList.add("is-playing");
     musicDisc.setAttribute("aria-label", `Pause ${musicTitle.textContent}`);
     musicDisc.setAttribute("aria-pressed", "true");
@@ -508,4 +632,5 @@ musicPlayer.addEventListener("ended", () => {
     musicDisc.classList.remove("is-playing");
     musicDisc.setAttribute("aria-label", `Play ${musicTitle.textContent}`);
     musicDisc.setAttribute("aria-pressed", "false");
+    playNextQueuedTrack();
 });
