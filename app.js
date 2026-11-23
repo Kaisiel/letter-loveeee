@@ -257,12 +257,31 @@ const ourPhotos = [
     "928071889_1778658516558809_1367767261868935149_n.jpg"
 ];
 
+const photoCaptions = {
+    0: "I love you because you try to understand me even when I'm difficult to understand. You listen to me, consider my feelings, and make me feel like my thoughts matter. I appreciate every effort you make to understand me.",
+    1: "I love you because you make me happy without even trying. Just talking to you, spending time with you, or simply knowing that you're there makes my heart feel complete. You bring happiness into my life in ways you probably don't even realize.",
+    2: "I love you because you're honest with me. I appreciate that you can tell me what you feel, what bothers you, and what you think. I'd rather hear the truth from you than have us hide things from each other.",
+    3: "I love you because of the person you are. Your personality is one of the things that made me fall for you. You're unique in your own way, and there's something about you that made you different from everyone else, and I wouldn't trade your personality for anything.",
+    4: "I love you because what we have is worth every effort. I know relationships aren't always easy, but I don't expect everything to be perfect. What matters to me is that we continue choosing respect, honesty, patience, and understanding.",
+    5: "I love you because you're my favorite person to talk to, laugh with, and share my day with. You're the person I want to tell about the little things that happen in my life. No matter how simple the conversation is, it becomes special because it's with you.",
+    6: "I love you simply because you're you. I don't need a thousand reasons to explain why I love you because my feelings go beyond words. These past 11 months have given me so many reasons to be thankful, and if I could choose all over again, I'd still choose you. I lovee you so much my loveee.",
+    7: "I love you because I never get tired of getting to know you. Even after 11 months, there's still so much I want to discover about you. I want to keep learning your likes, dislikes, favorites, dreams, and everything that makes you who you are.",
+    8: "I love you because you're patient with me. I know I'm not always perfect, and sometimes I make mistakes, but you still give me chances to learn and become better. Your patience means more to me than words can explain.",
+    9: "I love you because of all the little things you do. Your random messages, simple questions, sweet words, and small efforts make me feel special. It's not always the big things that matter; sometimes, the smallest things are the ones that make me fall for you even more.",
+    10: "I love you because you make an effort to keep our relationship strong. I notice the things you do, even the ones you think I don't see. I appreciate your time, attention, and love because they remind me that what we have is worth taking care of.",
+    11: "I love you because I don't expect you to be perfect. I love you for who you are, including the things you sometimes feel insecure about. You don't have to change yourself just to deserve my love because you're already someone incredibly special to me.",
+    12: "I love you because your presence alone is enough to make things feel better. You don't always have to do something special or say something sweet. Sometimes, just having you in my life is already more than enough to make me feel grateful.",
+    13: "I love you because you make me realize how important communication is. I want to hear your thoughts, understand your feelings, and work through things together. Your willingness to communicate means a lot to me.",
+    14: "I love you because having you in my life reminds me that there are beautiful things worth appreciating. I'm grateful for every conversation, every memory, and every opportunity to love you. I hope you never doubt how much you mean to me.",
+    15: "I love you because you care about me in your own special way. You ask how I am, remind me to take care of myself, and show concern even through simple words. Those little acts of care mean everything to me."
+};
+
 ourPhotos.forEach((fileName, index) => {
     const frame = document.createElement("button");
     frame.type = "button";
     frame.className = `letter-photo-frame letter-photo-frame--edge edge-${index + 1}`;
     frame.dataset.photo = `our images/${fileName}`;
-    frame.dataset.caption = `Our memory ${index + 1}`;
+    frame.dataset.caption = photoCaptions[index] ?? `Our memory ${index + 1}`;
     frame.setAttribute("aria-label", `Open photo ${index + 1}`);
 
     const image = document.createElement("img");

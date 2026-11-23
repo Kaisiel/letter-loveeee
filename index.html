@@ -1,215 +1,943 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>I LOVE YOU</title>
-    <meta name="description" content="A little love-filled surprise.">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="I LOVE YOU">
-    <meta property="og:description" content="A little love-filled surprise.">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="I LOVE YOU">
-    <meta name="twitter:description" content="A little love-filled surprise.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=30">
-    <script src="app.js?v=8" defer></script>
-
-</head>
-<body>
-<section class="window">
-    <header class="titlebar">
+    <meta name="description" content="A little love-filled surprise." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="I LOVE YOU" />
+    <meta property="og:description" content="A little love-filled surprise." />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="I LOVE YOU" />
+    <meta name="twitter:description" content="A little love-filled surprise." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css?v=30" />
+    <script src="app.js?v=11" defer></script>
+  </head>
+  <body>
+    <section class="window">
+      <header class="titlebar">
         <span>I love you so much</span>
-    
-    </header>
-    <h1 class="title">
-        Do you love me?</h1>
-    <img id="dogImage" class="dog-image" src="dog.png" alt="A crying dog">
-    <div class="actions">
-        <button id="yesBtn">
-            Yes
-        </button>
-        <button id="noBtn" class="btn--no">
-            No
-        </button>
-    </div>
-</section>
+      </header>
+      <h1 class="title">Do you love me?</h1>
+      <img id="dogImage" class="dog-image" src="dog.png" alt="A crying dog" />
+      <div class="actions">
+        <button id="yesBtn">Yes</button>
+        <button id="noBtn" class="btn--no">No</button>
+      </div>
+    </section>
 
     <button id="mail" type="button" aria-label="Open the letter">
-        <span class="mail-envelope" aria-hidden="true">
-            <span class="mail-envelope__back"></span>
-            <span class="mail-envelope__letter"></span>
-            <span class="mail-envelope__front"></span>
-            <span class="mail-envelope__flap"></span>
-        </span>
+      <span class="mail-envelope" aria-hidden="true">
+        <span class="mail-envelope__back"></span>
+        <span class="mail-envelope__letter"></span>
+        <span class="mail-envelope__front"></span>
+        <span class="mail-envelope__flap"></span>
+      </span>
     </button>
-    <audio id="heartRainSound" src="Children%20Yay%20Sound%20Effect%20(HD).mp3" preload="auto"></audio>
+    <audio
+      id="heartRainSound"
+      src="Children%20Yay%20Sound%20Effect%20(HD).mp3"
+      preload="auto"
+    ></audio>
 
-<div id="letterOverlay" class="letter-overlay" aria-hidden="true">
-    <div class="letter-stage">
-        <button class="letter-envelope" type="button" aria-label="Open the letter">
-            <div class="letter-envelope__back"></div>
-            <div class="letter-envelope__letter">
-                <strong>A letter for you</strong>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <div class="letter-envelope__flap"></div>
-            <div class="letter-envelope__front"></div>
+    <div id="letterOverlay" class="letter-overlay" aria-hidden="true">
+      <div class="letter-stage">
+        <button
+          class="letter-envelope"
+          type="button"
+          aria-label="Open the letter"
+        >
+          <div class="letter-envelope__back"></div>
+          <div class="letter-envelope__letter">
+            <strong>A letter for you</strong>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="letter-envelope__flap"></div>
+          <div class="letter-envelope__front"></div>
         </button>
         <article class="letter">
-            <div class="letter-decoration" aria-hidden="true">
-                <svg class="letter-decoration__art" viewBox="0 0 720 600" preserveAspectRatio="none">
-                    <g class="letter-decoration__letter-art">
-                        <image href="letter-art/vine-hearts.png" x="12" y="12" width="78" height="104" preserveAspectRatio="xMinYMin meet"></image>
-                        <image href="letter-art/outline-hearts.png" x="624" y="58" width="78" height="64" preserveAspectRatio="xMaxYMin meet"></image>
-                        <image href="letter-art/heart-swoop.png" x="12" y="458" width="78" height="126" preserveAspectRatio="xMinYMax meet"></image>
-                        <image href="letter-art/floating-hearts.png" x="624" y="500" width="78" height="78" preserveAspectRatio="xMaxYMax meet"></image>
-                    </g>
-                    <g class="letter-decoration__connectors">
-                        <path d="M90 26 C128 20 154 30 180 26 M214 26 C246 32 270 22 306 26 C344 32 376 20 414 26 C450 32 474 22 506 26 M530 26 C556 30 586 20 624 26"></path>
-                        <path d="M694 124 C702 184 692 226 696 282 M696 308 C692 330 700 348 696 370 C702 418 692 458 694 500"></path>
-                        <path d="M624 574 C590 566 558 582 538 574 M518 574 C512 576 506 574 498 574 M458 574 C420 580 400 570 380 574 M340 574 C326 578 316 570 306 574 C232 566 160 582 90 574"></path>
-                        <path d="M26 116 C18 210 34 286 24 366 M24 390 C18 410 28 434 26 458"></path>
-                        <path d="M696 282 C696 286 696 289 696 292 M24 366 C24 369 24 372 24 374"></path>
-                    </g>
-                    <g class="letter-decoration__hearts">
-                        <path d="M696 292 C689 285 682 288 684 295 C686 301 692 305 696 308 C700 305 706 301 708 295 C710 288 703 285 696 292Z"></path>
-                        <path d="M528 538 C523 531 516 534 518 541 C520 547 526 551 528 554 C530 551 536 547 538 541 C540 534 533 531 528 538Z"></path>
-                        <path d="M24 374 C17 367 10 370 12 377 C14 383 20 387 24 390 C28 387 34 383 36 377 C38 370 31 367 24 374Z"></path>
-                    </g>
-                    <g class="letter-decoration__flowers">
-                        <path class="letter-decoration__branch" d="M180 26 C188 20 192 18 198 18 M228 26 C218 18 212 16 202 18 M492 26 C502 18 508 16 518 18 M24 260 C32 260 38 260 40 260 M696 340 C688 340 682 340 680 340 M528 554 C528 560 528 566 528 574 M380 574 C374 580 370 582 366 582 M340 574 C346 580 350 582 354 582"></path>
-                        <circle class="letter-decoration__petal" cx="202" cy="18" r="4"></circle>
-                        <circle class="letter-decoration__petal" cx="195" cy="19" r="4"></circle>
-                        <circle class="letter-decoration__petal" cx="209" cy="19" r="4"></circle>
-                        <circle class="letter-decoration__petal" cx="197" cy="26" r="4"></circle>
-                        <circle class="letter-decoration__petal" cx="207" cy="26" r="4"></circle>
-                        <circle class="letter-decoration__flower-center" cx="202" cy="20" r="2.5"></circle>
-                        <circle class="letter-decoration__petal" cx="518" cy="18" r="4"></circle>
-                        <circle class="letter-decoration__petal" cx="511" cy="19" r="4"></circle>
-                        <circle class="letter-decoration__petal" cx="525" cy="19" r="4"></circle>
-                        <circle class="letter-decoration__petal" cx="513" cy="26" r="4"></circle>
-                        <circle class="letter-decoration__petal" cx="523" cy="26" r="4"></circle>
-                        <circle class="letter-decoration__flower-center" cx="518" cy="20" r="2.5"></circle>
-                        <circle class="letter-decoration__petal" cx="44" cy="254" r="4"></circle>
-                        <circle class="letter-decoration__petal" cx="38" cy="260" r="4"></circle>
-                        <circle class="letter-decoration__petal" cx="50" cy="260" r="4"></circle>
-                        <circle class="letter-decoration__petal" cx="44" cy="266" r="4"></circle>
-                        <circle class="letter-decoration__flower-center" cx="44" cy="260" r="2.5"></circle>
-                        <circle class="letter-decoration__petal" cx="676" cy="334" r="4"></circle>
-                        <circle class="letter-decoration__petal" cx="670" cy="340" r="4"></circle>
-                        <circle class="letter-decoration__petal" cx="682" cy="340" r="4"></circle>
-                        <circle class="letter-decoration__petal" cx="676" cy="346" r="4"></circle>
-                        <circle class="letter-decoration__flower-center" cx="676" cy="340" r="2.5"></circle>
-                        <circle class="letter-decoration__petal" cx="360" cy="576" r="5"></circle>
-                        <circle class="letter-decoration__petal" cx="354" cy="582" r="5"></circle>
-                        <circle class="letter-decoration__petal" cx="366" cy="582" r="5"></circle>
-                        <circle class="letter-decoration__petal" cx="360" cy="588" r="5"></circle>
-                        <circle class="letter-decoration__flower-center" cx="360" cy="582" r="3"></circle>
-                    </g>
-                    <g class="letter-decoration__leaves">
-                        <path d="M26 178 C38 166 52 164 66 170 C60 184 46 190 26 178Z"></path>
-                        <path d="M694 210 C682 198 668 196 654 202 C660 216 674 222 694 210Z"></path>
-                        <path d="M26 438 C38 426 52 424 66 430 C60 444 46 450 26 438Z"></path>
-                        <path d="M694 452 C682 440 668 438 654 444 C660 458 674 464 694 452Z"></path>
-                        <path d="M262 26 C250 14 236 12 222 18 C228 32 242 38 262 26Z"></path>
-                        <path d="M458 574 C470 562 486 562 498 574 C486 586 470 586 458 574Z"></path>
-                    </g>
-                </svg>
-            </div>
-            <button id="closeLetter" type="button" aria-label="Close the letter">×</button>
-            <div class="letter-scroll">
-                <div class="letter-content">
-                    <div class="letter-content__body">
-                    <button id="musicDisc" class="music-disc" type="button"
-                            aria-label="Play Secret Door" aria-pressed="false">
-                        <span aria-hidden="true"></span>
-                    </button>
-                    <p id="musicTitle" class="music-title">Secret Door</p>
-                    <p id="musicStatus" class="music-status" aria-live="polite">
-                        Drag clockwise to fast-forward or counterclockwise to rewind.
-                    </p>
-                    <div class="music-controls">
-                        <select id="musicPlaylist" aria-label="Choose a song"></select>
-                        <button id="addMusicButton" type="button">Add songs</button>
-                    </div>
-                    <input id="musicFiles" class="music-file" type="file" accept="audio/*" multiple>
-                    <audio id="musicPlayer" preload="metadata"></audio>
-
-                    <template id="letterText">
-                    <h1>Happy 11th Monthsary Loveeeee!!!!</h1>
-                    <p>11 MONTHS NATAAAAAA????? HAHAHAHAHAHA. ONE MONTH NALANG JUD, LOVE, ONE MONTH NALANG MAG ONE YEAR NATAAAAA. LIKE WHATTTT????? HAHAHHA yati oii, hapit na diay kaayo ta mag one year. Another month of loving you, annoying you, being your number one fan, and being that one person na will always be here ayieee. HAHAHAHAHA. Happy 11th monthsary, loveeeeee!</p>
-                    <p>Honestly, I don't even know where to start because naa napud koy daghan kaayo gusto iingon nimo. Tapos mostly basi Ani walay comma Kay kabalo naman basi ka (Dili kabalo Kay Cabahug ka) Wala kaau ko gagamit ana AHAHAHA. Murag every month nalang ko mag wonder kung unsaon nako pag taas ani na message without repeating myself biskan di nako need?, pero here we go again HAHAHAHA. And maybe mag wonder ka nganong ing Ani man, actually tung last month pa nako gusto himuon but wala nako nahimo tapos December nalang unta pag 1 year nata pero naisip pud nako na dugay paman kaau so ito mag ano rakog Gamay tapos pag 1 year najud ang ano so pag assume na naay something pud next month ( char ayaw dei Kay basi di nako mahimo😓😓😓) but balik sakong Gina ingon ganina, I guess that's one thing about loving you dili jud mahurot akong gusto isulti about sa imoha. Sometimes I feel like I already told you everything, pero naa napud koy ma realize, ma remember, or ma appreciate about you na gusto napud nako i share. And even if some of these things sound familiar, I hope you never get tired of hearing them because I don't think I'll ever get tired of reminding you how much you mean to me.</p>
-                    <p>Eleven months, love. Eleven months of having you in my life, and I still find it funny how someone who used to be just another person I talked to, someone na gi chat ra nako intentionally Kay gusto nako maabsan sa Rubik's cube became someone I genuinely cannot imagine not having around. Like, who would've thought na maabot ta ani? HAHAHAHAHA. But look at us now. Here we are, celebrating another month together, and I'm still as happy as ever na ikaw akong girlfriend. Sorry love, pero crush gihapon kaayo tika ayieee kiligon na ron. Wala jud di ni nawala biskan hapit na mag one year or biskan hangtod unsa na years.</p>
-                    <p>And before anything else, I want you to know that I'm genuinely happy na nakaabot ta ani nga point. Not because everything has always been easy, not because we have everything figured out, but because despite everything, we are still here, still learning about each other, and still making an effort to understand one another. I know these month also have been not okay, these past few days you feel kanang Wala sa mood and I understand it po Kay tung last couple of days Kay Ako pud HAHAHAHAHAH but let's don't talk about that yet. I know na eleven months might not sound that long to some people, pero para nako, daghan na kaayo ni og meaning. We've already shared so many little moments, conversations, experiences, and feelings that have slowly become part of our story. And I know na this is only a small part of everything we could still experience together.</p>
-                    <p>One month nalang, love. ONE MONTH NALANG JUD. HAHAHAHAHA. I don't expect sa atong first anniversary, but I already know na it will mean so much to me. Kay even if there no date or celebration mahitabo. Still It's going to be a reminder na one whole year na ta of choosing to know each other, understand each other, and build something together. And honestly, I'm excited to reach that day with you. I want to look back at our first few months and remember how everything started. I want us to laugh at our old conversations (maybe Ako ra basi Kay mag br ko Kay Wala ra HAHAHAHA), our silly misunderstandings, our random moments, and even the things na grabe kaayo nato ka overthink sauna. HAHAHAHAHA. Basin ma cringe pa gani ta sa atong old messages, biskan mas cringe pa basi ta Ron tapos ga pa lala pa pero please let's keep them because I want to have something to look back on when we're older.</p>
-                    <p>You know what, loveee? One thing I've realized these past months is that loving someone isn't only about knowing the big things about them. It's also about paying attention to the little things. The small details na sometimes even the person themselves doesn't notice. And I think I've slowly become someone who notices those things about you. I notice your little habits, the way you respond to certain things, the way your mood changes, the things that make you excited, and even the little things that you probably think I don't remember. HAHAHAHA. Pero if you ask me Dili basi nako matubag HAHAHAHAH </p>
-                    <p>Sometimes I remember something you mentioned before without you even realizing that I remembered it. Sometimes naa koy madungog or makita na maka remind nako nimo. And sometimes I find myself thinking about what you would say or how you would react to something. It's funny because I don't even intentionally do it. Nahimo nalang jud siya part sa akong everyday thoughts. And I hope you know na I want to continue knowing those little things about you. I don't want to know you only as my girlfriend. I want to know you as a person, as someone with her own thoughts, dreams, opinions, interests, and experiences.</p>
-                    <p>I want to know the things you don't usually talk about. The stories behind your favorite things and speaking of these I barely know any of your favorites, imong favorite color ra og favorite gulay og fruit and kana ra yati HHAHAHA tell me pud sa uban oii. Okay back to the topic. Umm the reasons why certain things matter to you, the memories that made you who you are today, and even the random thoughts that cross your mind when you're doing absolutely nothing. I want to know what makes you feel appreciated, what makes you feel understood, and what makes you feel comfortable. Kay para nako, there's always something new to discover about a person, no matter how long you've known them. And I want to keep discovering those things about you. Also what makes you loved HEHEH</p>
-                    <p>Another thing I want to appreciate is how you make me feel included in your life.I know na sometimes you have your own things to do, your own responsibilities, and your own world outside our relationship. And I actually love that you have those things. I love seeing you have your own interests, your own goals, and your own experiences. I don't want our relationship to become the only thing that matters in our lives because I also want to see us grow individually. I want to see you achieve the things you've been working hard for. I want to hear about your little victories, your achievements, and even the smallest progress that you're proud of.</p>
-                    <p>And please, love, never think na you have to choose between giving time to yourself and giving time to me. I want you to have time for your friends, family, studies, hobbies, and everything else that makes you happy. I want you to experience things, learn new things, and become the person you want to be. I'll always be happy to hear about those things. I want to be someone who celebrates your achievements without making everything about myself. Your happiness and growth matter to me, too.</p>
-                    <p>And if ever naa kay days na busy kaayo or dili ka ka reply immediately, I hope you never feel like you have to rush everything just because of me. I know we both have lives to live outside our conversations. Of course, mingawon gihapon ko nimo, duh. HAHAHAHAHA. Basin mangulit pa gani ko and mag send og unnecessary messages just to get your attention. But I think just a small reassurance that I'm still the one will be enough and I want you to know that I understand na there are times when other things need your attention. I want us to have a relationship where we can enjoy each other's company without feeling like we have to sacrifice everything else.</p>
-                    <p>Loveee, I also want to thank you for being patient with me. I know na naa koy mga times na lisod sabton akong thoughts, especially when I start overthinking something. Sometimes I have so many things running through my mind that even I don't know how to explain them properly. HAHAHAHA. And there are moments na I might ask questions, seek reassurance, or become quiet because I'm trying to understand what I'm feeling. I know dili always sayon dealing with that, and I appreciate you for being patient with me.</p>
-                    <p>I'm still learning how to handle my emotions better. I'm learning na dili tanan thoughts kinahanglan dayon hatagan og meaning, dili tanan silence means something is wrong, and dili tanan worries are things that will actually happen. Sometimes I just need to breathe, understand the situation, and communicate instead of allowing my imagination to make things more complicated than they actually are. HAHAHAHA. I don't want my overthinking to become something that makes you feel restricted or pressured. I want to be able to trust you while also learning to trust myself and the relationship we're building.</p>
-                    <p>And I hope you can also be patient with yourself, love. You don't have to understand everything immediately. You don't have to know exactly what you are feeling and what to do every time something happens, after all We all have different EQ and We're both still learning, and I think that's okay. I don't expect us to become perfect partners overnight. What matters to me is that we're willing to recognize our mistakes, learn from them, and make better choices next time.</p>
-                    <p>I hope you know that I don't only love the version of you that I get to see every day. I also want to understand the parts of you that you don't always show. The parts that are difficult to explain, the thoughts you keep to yourself sometimes, and the feelings that you might not know how to put into words. I know na dili nako mahibaw-an tanan about sa imoha, and I won't pretend that I can always understand what you're going through, because sometimes i just can't But I want to make an effort.</p>
-                    <p>If you have something bothering you, you can tell me. If you want to rant about something, I'll listen. If you want to share something that happened during your day, I'll be interested. If you want to talk about something completely random, then let's talk about it. And if there are moments when you don't know what to say, that's okay too. You don't always have to come to me with a complete explanation of what you're feeling.</p>
-                    <p>I want you to feel na you can be honest with me, even when the truth isn't necessarily something I want to hear. I would rather understand what's really happening than have us pretend that everything is okay when it isn't. I want us to be comfortable enough to express our thoughts without immediately worrying about how the other person might react. Of course, we still have to be considerate of each other's feelings, but I hope we never lose that willingness to communicate.</p>
-                    <p>And love, please remember na you are allowed to have bad days. You are allowed to be tired, to be frustrated, to have doubts about yourself, and to have moments when things don't go according to your plans. I don't want you to feel like you need to hide those things from me. You don't have to be sweet every second, you don't have to be happy all the time, and you definitely don't have to pretend that you're okay just to keep things peaceful between us. I want to know the real you, not just the version of you that thinks she has to make everyone happy.</p>
-                    <p>Also, I hope you never forget how proud I am of you. Even if I don't always say it, I really am. I know na naa kay things na ginapaningkamotan (use rako ani na word Kay Wala ragud), things na sometimes other people might not even notice. And I want you to know that your efforts matter. Even if things don't always turn out the way you wanted them to, that doesn't mean your efforts were wasted. I'm proud of you for continuing, for trying, and for showing up even on days when things aren't easy.</p>
-                    <p>I hope you don't become too hard on yourself whenever you make mistakes or whenever you feel like you're not doing enough. You are still growing, love. You still have so many things ahead of you, and you don't need to have everything figured out right now. I want to see you succeed, but I also want to see you enjoy the process. I want you to have memories outside of school, experiences that make you happy, and opportunities to discover what you're capable of.</p>
-                    <p>And when you achieve something, no matter how big or small, please tell me. I want to celebrate with you. I want to be one of the people who gets excited when something good happens to you. Duh, maybe I may look not excited but I'm excited on the inside HAHAHAHAHA. I want to hear your stories, your plans, and the things you're looking forward to. I want to see you become more confident in yourself and in the things you can do.</p>
-                    <p>Now, let's talk about us again. HAHAHAHAHA. I think one of the things I'm most grateful for is that I get to experience a kind of love where I can be myself. I don't have to constantly think of something impressive to say just to keep your attention. I can be random, annoying, dramatic, and sometimes completely nonsense, and somehow you still put up with me. HAHAHAHAHA. Thank you for that, by the way. Your patience deserves an award.</p>
-                    <p>But seriously, I love how our relationship has its own little world. We have our own jokes, our own ways of teasing each other, our own conversations that probably wouldn't make sense to other people. There are things that only we understand, and I think that's one of the things that make our relationship special. We have moments that might look ordinary to everyone else, but they mean something to us because we experienced them together.</p>
-                    <p>I hope we continue making those kinds of memories. Not necessarily grand or expensive ones, but moments that we'll remember because they made us happy. I want more random conversations, more laughter, more stories, more pictures, more little updates, and more moments where we get to enjoy each other's presence. I want us to have more experiences that we can look back on and say, "HAHAHAHA remember when we did that?" Tho I still wish the time will come where I can just go to your home and spend time with you there but it's okay HEHE </p>
-                    <p>And hopefully, someday, we'll have so many memories that we won't even know which one to talk about first. HAHAHAHAHA. Imagine lang, love. We'll have so many stories from different stages of our lives. From our school days to the time when we're already pursuing our own careers and responsibilities. From our younger selves who used to worry about small things to the versions of us who have learned so much along the way. I think that would be really nice. Maybe Ikaw lang makahimog story para sa atong mga grandchild Kay Ako Kay nakalimot na basi but maminaw gyapon ko HAHAHHA</p>
-                    <p>I also want to remind you that I will never want you to feel like you have to compete with anyone for my love. I know I've said similar things before, but I want to make it clear again. I chose you, and I'm happy with that choice. I don't need to look for someone else to make me realize what I already have. I don't want to entertain things that could disrespect what we have, and I want my actions to reflect the same love that I keep telling you about.</p>
-                    <p>I want you to feel secure not just because of my promises but because of the way I treat you. I know words are easy to say, and I don't want to rely on them alone. I want to show you through my consistency, honesty, respect, and effort. I want you to feel appreciated without having to ask for it every time. I want you to know that I take your feelings seriously and that I don't see your trust as something I can just take for granted.</p>
-                    <p>And I hope we both continue protecting what we have. Not by keeping each other away from the world, but by respecting the boundaries we've agreed on and being mindful of the decisions we make. I want our relationship to be something that gives us comfort and happiness, not something that makes either of us feel like we're losing ourselves.</p>
-                    <p>One thing I really look forward to is seeing how much we'll change as time passes. Kay right now, we're still figuring out a lot of things. We have school, responsibilities, personal goals, and so many uncertainties waiting ahead of us. There will probably be days when our schedules won't match, days when we have too much to do, and days when we'll have to adjust to new situations. But I hope we never forget to make room for each other in the middle of all those changes.</p>
-                    <p>I don't know exactly what the next months will look like. I don't know what challenges we'll encounter or what unexpected things might happen. But I hope we continue approaching those things as two people who are willing to understand each other. I don't want us to become afraid of change. I want us to grow, even if that means discovering new sides of ourselves that we haven't seen before.</p>
-                    <p>And if there comes a time when things become difficult, I hope we remember that we're on the same team. Dili kita kontra sa usag usa, love. We don't have to win every disagreement or prove who is more hurt. We can listen, explain, apologize, and find a way forward. I want us to solve problems together rather than make each other feel like the problem. I know we won't always have the same opinions, and that's completely normal. What's important is that we continue respecting each other even when we disagree.</p>
-                    <p>I want to keep learning how to love you in ways that you can actually feel. Not just in ways that I think are enough, but in ways that make you feel valued and understood. And I hope you can tell me those things, too. I don't want us to assume that the other person should automatically know everything. Let's keep telling each other what we need, what makes us happy, and what we can improve. I think there's always room for us to become better partners.</p>
-                    <p>And speaking of the future, my future wifeeeee, HAHAHAHAHA. Ambot jud nimo love, ikaw jud akong ma imagine whenever I think about having someone beside me in the future. Maybe Kay Ikaw rajud ang person na I see myself with, hayss but theres still fear sa akoa na maybe maging lesson rako and maybe gipa grow lang Tika for someone else hayss but I genuinely want it to be youu, I know na layo pa kaayo ta ana, and we still have so many things to accomplish individually. But I genuinely hope na someday, when we look back at this stage of our lives, we'll be happy that we got to experience it together.</p>
-                    <p>I want to see you achieve your dreams. I want to achieve mine, too. I want us to become people who are proud of themselves, people who have grown through their experiences, and people who have learned how to handle life with more maturity. And if we get to share those experiences with each other, then that would be something I'll always be grateful for.</p>
-                    <p>I don't want to rush anything. We have so much time to grow and so many things to learn. For now, I want us to enjoy being where we are. Let's make the most of our remaining school days, support each other through our responsibilities, and keep creating memories while we still have these opportunities. I want us to look forward to our future without forgetting to appreciate the present.</p>
-                    <p>And hopefully, when we finally reach those things we currently talk about, we'll still be able to look at each other with the same excitement. Maybe we'll be more mature, maybe our conversations will be different, and maybe we'll have more responsibilities than we do now. But I hope we never lose the habit of making each other laugh, asking about each other's day, and finding reasons to spend time together.</p>
-                    <p>I hope that even after years, I can still randomly message you just to tell you something unimportant. I hope I can still annoy you with my nonsense. I hope I can still make you laugh with the most ridiculous things. And I hope that even after knowing each other for so long, we'll continue being curious about each other's lives.</p>
-                    <p>Lastly, loveee, thank you for making these eleven months meaningful. Thank you for the time you've given me, the stories you've shared, the affection you've shown, and the memories we've created. Thank you for being part of my life and allowing me to be part of yours. Thank you for the little things that you might not even realize I appreciate. Thank you for making ordinary days feel a little more special just by being someone I get to share them with.</p>
-                    <p>I'm sorry for the times when I haven't expressed myself properly, for the moments when I could have understood you better, and for the times when my actions might not have matched what I wanted you to feel. I know I still have a lot to improve, and I don't want to pretend otherwise. But please know that I genuinely want to become better, not just for the sake of saying that I'm a good boyfriend, but because you deserve a relationship where you feel respected, appreciated, understood, and loved.</p>
-                    <p>I can't promise that I'll always know the right thing to say or that I'll never make mistakes. But I can promise that I'll keep learning, listening, and making an effort. I want to be someone who doesn't only show up when everything is happy and convenient. I want to be someone who is willing to understand you even when things are complicated. And I hope we both continue giving each other that kind of love.</p>
-                    <p>Eleven months down, and hopefully so many more to come. One month nalang mag one year nata, loveeeeee. I am genuinely excited for that day, but more than the number of months, I'm excited about all the ordinary days that we still get to spend together after it. I want more monthsaries, more anniversaries, more birthdays together, more random days, more memories, and more reasons to appreciate having you in my life.</p>
-                    <p>If there's one thing I want you to remember from this very long message HAHAHAHAHA, it's that I'm happy it's you. Out of all the people I could have met, I'm glad our paths crossed. I'm glad that I got to know you, that I developed feelings for you, and that we eventually became what we are today. I wouldn't want to replace the story we have with something else because this is our story, and I want to keep making it better with you.</p>
-                    <p>ILOVEEYOUUUUSOOMUUCHH and I want to go into details on what I loveee about youu but I feel that nahimo nako na and I'm sure you remember pud man, I also won't go into details about anything that happened Kay there are better times to talk about that. But I just want to say something because I don't know if you forgotten it but no matter what po I still want you to be beside even if you think I need space. It's always you I need, even if I'm having a bad day or Wala sa mood it's still youu I want, biskan pag Ikaw ang nay sala but I would still want you to beside. And why I'm saying this?? Kay tung Wala koy GANA I feel like you're giving me space even though what I only need was you to be right there with me and Maybe that contributed Kay Gina isip pud nako that you already know that Kay I always say pud mana but I also understand if you're going through something too.</p>
-                    <p> And love I want to be honest on what I feel, these couple days I'm becoming more worried and scared about losing you, but It's not because I don't trust you or anything but these days I feel the silence between us, idk what kind of silence kay I notice that these days wla kaau ka ga chat tapos kung mo chat man kay after so many hours then sa tiktok for streak purposes nalang ka ga send, tapos I notice pa na online ka but wala gyapon ka ni reply and even though I understand na maybe busy lang ka or wala ka sa mood, dili gyapon nako ma ano ang kana na feeling so yeah I'm feeling that maybe I'm slowly losing you, and ma think nko na basi ginakapoy naka, nawawalan nakag gana or basi ma guilty najud kag maau. I'm so sorry po for thinking this way haysss. I guess to be honest maybe I just needed to hear or read nga ako gyapon, maybe just a small reassurance is what I needed and I'm just to shy to ask for it. Sorry again for thinking like that lovee, but always remember that I loveee youu so much poo.</p>
-                    <p>Happy 11th monthsary again, my loveeeeee. Thank you for being my girlfriend, my favorite notification, my favorite person to annoy, and the girl who still gives me butterflies even after eleven months. HAHAHAHAHA. I LOVE YOU SOOOOO MUCHHHHH, MORE THAN I CAN PROBABLY EXPLAIN IN THIS ALREADY VERY LONG MESSAGE.</p>
-                    <p>One month nalang, myloveee. Another long message will See you again at our first year, and hopefully at all the years after that. Na para bang tradition HAHAHHAH </p>
-                    <p>I LOVE YOUUUUUU, MY LOVE, MY CRUSH, MY FAVORITE GIRL, MY BABYY, MY WORLD, MY ONE AND ONLY GIRL, MY BEST FRIEND, AND MY FUTURE WIFEEEEEE. ALWAYS IKAW AND IKAW RAJUD MWUAH MWUAHH😘😘😘</p>
-                    </template>
-                    </div>
+          <div class="letter-decoration" aria-hidden="true">
+            <svg
+              class="letter-decoration__art"
+              viewBox="0 0 720 600"
+              preserveAspectRatio="none"
+            >
+              <g class="letter-decoration__letter-art">
+                <image
+                  href="letter-art/vine-hearts.png"
+                  x="12"
+                  y="12"
+                  width="78"
+                  height="104"
+                  preserveAspectRatio="xMinYMin meet"
+                ></image>
+                <image
+                  href="letter-art/outline-hearts.png"
+                  x="624"
+                  y="58"
+                  width="78"
+                  height="64"
+                  preserveAspectRatio="xMaxYMin meet"
+                ></image>
+                <image
+                  href="letter-art/heart-swoop.png"
+                  x="12"
+                  y="458"
+                  width="78"
+                  height="126"
+                  preserveAspectRatio="xMinYMax meet"
+                ></image>
+                <image
+                  href="letter-art/floating-hearts.png"
+                  x="624"
+                  y="500"
+                  width="78"
+                  height="78"
+                  preserveAspectRatio="xMaxYMax meet"
+                ></image>
+              </g>
+              <g class="letter-decoration__connectors">
+                <path
+                  d="M90 26 C128 20 154 30 180 26 M214 26 C246 32 270 22 306 26 C344 32 376 20 414 26 C450 32 474 22 506 26 M530 26 C556 30 586 20 624 26"
+                ></path>
+                <path
+                  d="M694 124 C702 184 692 226 696 282 M696 308 C692 330 700 348 696 370 C702 418 692 458 694 500"
+                ></path>
+                <path
+                  d="M624 574 C590 566 558 582 538 574 M518 574 C512 576 506 574 498 574 M458 574 C420 580 400 570 380 574 M340 574 C326 578 316 570 306 574 C232 566 160 582 90 574"
+                ></path>
+                <path
+                  d="M26 116 C18 210 34 286 24 366 M24 390 C18 410 28 434 26 458"
+                ></path>
+                <path
+                  d="M696 282 C696 286 696 289 696 292 M24 366 C24 369 24 372 24 374"
+                ></path>
+              </g>
+              <g class="letter-decoration__hearts">
+                <path
+                  d="M696 292 C689 285 682 288 684 295 C686 301 692 305 696 308 C700 305 706 301 708 295 C710 288 703 285 696 292Z"
+                ></path>
+                <path
+                  d="M528 538 C523 531 516 534 518 541 C520 547 526 551 528 554 C530 551 536 547 538 541 C540 534 533 531 528 538Z"
+                ></path>
+                <path
+                  d="M24 374 C17 367 10 370 12 377 C14 383 20 387 24 390 C28 387 34 383 36 377 C38 370 31 367 24 374Z"
+                ></path>
+              </g>
+              <g class="letter-decoration__flowers">
+                <path
+                  class="letter-decoration__branch"
+                  d="M180 26 C188 20 192 18 198 18 M228 26 C218 18 212 16 202 18 M492 26 C502 18 508 16 518 18 M24 260 C32 260 38 260 40 260 M696 340 C688 340 682 340 680 340 M528 554 C528 560 528 566 528 574 M380 574 C374 580 370 582 366 582 M340 574 C346 580 350 582 354 582"
+                ></path>
+                <circle
+                  class="letter-decoration__petal"
+                  cx="202"
+                  cy="18"
+                  r="4"
+                ></circle>
+                <circle
+                  class="letter-decoration__petal"
+                  cx="195"
+                  cy="19"
+                  r="4"
+                ></circle>
+                <circle
+                  class="letter-decoration__petal"
+                  cx="209"
+                  cy="19"
+                  r="4"
+                ></circle>
+                <circle
+                  class="letter-decoration__petal"
+                  cx="197"
+                  cy="26"
+                  r="4"
+                ></circle>
+                <circle
+                  class="letter-decoration__petal"
+                  cx="207"
+                  cy="26"
+                  r="4"
+                ></circle>
+                <circle
+                  class="letter-decoration__flower-center"
+                  cx="202"
+                  cy="20"
+                  r="2.5"
+                ></circle>
+                <circle
+                  class="letter-decoration__petal"
+                  cx="518"
+                  cy="18"
+                  r="4"
+                ></circle>
+                <circle
+                  class="letter-decoration__petal"
+                  cx="511"
+                  cy="19"
+                  r="4"
+                ></circle>
+                <circle
+                  class="letter-decoration__petal"
+                  cx="525"
+                  cy="19"
+                  r="4"
+                ></circle>
+                <circle
+                  class="letter-decoration__petal"
+                  cx="513"
+                  cy="26"
+                  r="4"
+                ></circle>
+                <circle
+                  class="letter-decoration__petal"
+                  cx="523"
+                  cy="26"
+                  r="4"
+                ></circle>
+                <circle
+                  class="letter-decoration__flower-center"
+                  cx="518"
+                  cy="20"
+                  r="2.5"
+                ></circle>
+                <circle
+                  class="letter-decoration__petal"
+                  cx="44"
+                  cy="254"
+                  r="4"
+                ></circle>
+                <circle
+                  class="letter-decoration__petal"
+                  cx="38"
+                  cy="260"
+                  r="4"
+                ></circle>
+                <circle
+                  class="letter-decoration__petal"
+                  cx="50"
+                  cy="260"
+                  r="4"
+                ></circle>
+                <circle
+                  class="letter-decoration__petal"
+                  cx="44"
+                  cy="266"
+                  r="4"
+                ></circle>
+                <circle
+                  class="letter-decoration__flower-center"
+                  cx="44"
+                  cy="260"
+                  r="2.5"
+                ></circle>
+                <circle
+                  class="letter-decoration__petal"
+                  cx="676"
+                  cy="334"
+                  r="4"
+                ></circle>
+                <circle
+                  class="letter-decoration__petal"
+                  cx="670"
+                  cy="340"
+                  r="4"
+                ></circle>
+                <circle
+                  class="letter-decoration__petal"
+                  cx="682"
+                  cy="340"
+                  r="4"
+                ></circle>
+                <circle
+                  class="letter-decoration__petal"
+                  cx="676"
+                  cy="346"
+                  r="4"
+                ></circle>
+                <circle
+                  class="letter-decoration__flower-center"
+                  cx="676"
+                  cy="340"
+                  r="2.5"
+                ></circle>
+                <circle
+                  class="letter-decoration__petal"
+                  cx="360"
+                  cy="576"
+                  r="5"
+                ></circle>
+                <circle
+                  class="letter-decoration__petal"
+                  cx="354"
+                  cy="582"
+                  r="5"
+                ></circle>
+                <circle
+                  class="letter-decoration__petal"
+                  cx="366"
+                  cy="582"
+                  r="5"
+                ></circle>
+                <circle
+                  class="letter-decoration__petal"
+                  cx="360"
+                  cy="588"
+                  r="5"
+                ></circle>
+                <circle
+                  class="letter-decoration__flower-center"
+                  cx="360"
+                  cy="582"
+                  r="3"
+                ></circle>
+              </g>
+              <g class="letter-decoration__leaves">
+                <path
+                  d="M26 178 C38 166 52 164 66 170 C60 184 46 190 26 178Z"
+                ></path>
+                <path
+                  d="M694 210 C682 198 668 196 654 202 C660 216 674 222 694 210Z"
+                ></path>
+                <path
+                  d="M26 438 C38 426 52 424 66 430 C60 444 46 450 26 438Z"
+                ></path>
+                <path
+                  d="M694 452 C682 440 668 438 654 444 C660 458 674 464 694 452Z"
+                ></path>
+                <path
+                  d="M262 26 C250 14 236 12 222 18 C228 32 242 38 262 26Z"
+                ></path>
+                <path
+                  d="M458 574 C470 562 486 562 498 574 C486 586 470 586 458 574Z"
+                ></path>
+              </g>
+            </svg>
+          </div>
+          <button id="closeLetter" type="button" aria-label="Close the letter">
+            ×
+          </button>
+          <div class="letter-scroll">
+            <div class="letter-content">
+              <div class="letter-content__body">
+                <button
+                  id="musicDisc"
+                  class="music-disc"
+                  type="button"
+                  aria-label="Play Secret Door"
+                  aria-pressed="false"
+                >
+                  <span aria-hidden="true"></span>
+                </button>
+                <p id="musicTitle" class="music-title">Secret Door</p>
+                <p id="musicStatus" class="music-status" aria-live="polite">
+                  Drag clockwise to fast-forward or counterclockwise to rewind.
+                </p>
+                <div class="music-controls">
+                  <select
+                    id="musicPlaylist"
+                    aria-label="Choose a song"
+                  ></select>
+                  <button id="addMusicButton" type="button">Add songs</button>
                 </div>
+                <input
+                  id="musicFiles"
+                  class="music-file"
+                  type="file"
+                  accept="audio/*"
+                  multiple
+                />
+                <audio id="musicPlayer" preload="metadata"></audio>
+
+                <template id="letterText">
+                  <h1>Happy 11th Monthsary Loveeeee!!!!</h1>
+                  <p>
+                    11 MONTHS NATAAAAAA????? HAHAHAHAHAHA. ONE MONTH NALANG JUD,
+                    LOVE, ONE MONTH NALANG MAG ONE YEAR NATAAAAA. LIKE
+                    WHATTTT????? HAHAHHA yati oii, hapit na diay kaayo ta mag
+                    one year. Another month of loving you, annoying you, being
+                    your number one fan, and being that one person na will
+                    always be here ayieee. HAHAHAHAHA. Happy 11th monthsary,
+                    loveeeeee!
+                  </p>
+                  <p>
+                    Honestly, I don't even know where to start because naa napud
+                    koy daghan kaayo gusto iingon nimo. Tapos mostly basi Ani
+                    walay comma Kay kabalo naman basi ka (Dili kabalo Kay
+                    Cabahug ka) Wala kaau ko gagamit ana AHAHAHA. Murag every
+                    month nalang ko mag wonder kung unsaon nako pag taas ani na
+                    message without repeating myself biskan di nako need?, pero
+                    here we go again HAHAHAHA. And maybe mag wonder ka nganong
+                    ing Ani man, actually tung last month pa nako gusto himuon
+                    but wala nako nahimo tapos December nalang unta pag 1 year
+                    nata pero naisip pud nako na dugay paman kaau so ito mag ano
+                    rakog Gamay tapos pag 1 year najud ang ano so pag assume na
+                    naay something pud next month ( char ayaw dei Kay basi di
+                    nako mahimo😓😓😓) but balik sakong Gina ingon ganina, I
+                    guess that's one thing about loving you dili jud mahurot
+                    akong gusto isulti about sa imoha. Sometimes I feel like I
+                    already told you everything, pero naa napud koy ma realize,
+                    ma remember, or ma appreciate about you na gusto napud nako
+                    i share. And even if some of these things sound familiar, I
+                    hope you never get tired of hearing them because I don't
+                    think I'll ever get tired of reminding you how much you mean
+                    to me.
+                  </p>
+                  <p>
+                    Eleven months, love. Eleven months of having you in my life,
+                    and I still find it funny how someone who used to be just
+                    another person I talked to, someone na gi chat ra nako
+                    intentionally Kay gusto nako maabsan sa Rubik's cube became
+                    someone I genuinely cannot imagine not having around. Like,
+                    who would've thought na maabot ta ani? HAHAHAHAHA. But look
+                    at us now. Here we are, celebrating another month together,
+                    and I'm still as happy as ever na ikaw akong girlfriend.
+                    Sorry love, pero crush gihapon kaayo tika ayieee kiligon na
+                    ron. Wala jud di ni nawala biskan hapit na mag one year or
+                    biskan hangtod unsa na years.
+                  </p>
+                  <p>
+                    And before anything else, I want you to know that I'm
+                    genuinely happy na nakaabot ta ani nga point. Not because
+                    everything has always been easy, not because we have
+                    everything figured out, but because despite everything, we
+                    are still here, still learning about each other, and still
+                    making an effort to understand one another. I know these
+                    month also have been not okay, these past few days you feel
+                    kanang Wala sa mood and I understand it po Kay tung last
+                    couple of days Kay Ako pud HAHAHAHAHAH but let's don't talk
+                    about that yet. I know na eleven months might not sound that
+                    long to some people, pero para nako, daghan na kaayo ni og
+                    meaning. We've already shared so many little moments,
+                    conversations, experiences, and feelings that have slowly
+                    become part of our story. And I know na this is only a small
+                    part of everything we could still experience together.
+                  </p>
+                  <p>
+                    One month nalang, love. ONE MONTH NALANG JUD. HAHAHAHAHA. I
+                    don't expect sa atong first anniversary, but I already know
+                    na it will mean so much to me. Kay even if there no date or
+                    celebration mahitabo. Still It's going to be a reminder na
+                    one whole year na ta of choosing to know each other,
+                    understand each other, and build something together. And
+                    honestly, I'm excited to reach that day with you. I want to
+                    look back at our first few months and remember how
+                    everything started. I want us to laugh at our old
+                    conversations (maybe Ako ra basi Kay mag br ko Kay Wala ra
+                    HAHAHAHA), our silly misunderstandings, our random moments,
+                    and even the things na grabe kaayo nato ka overthink sauna.
+                    HAHAHAHAHA. Basin ma cringe pa gani ta sa atong old
+                    messages, biskan mas cringe pa basi ta Ron tapos ga pa lala
+                    pa pero please let's keep them because I want to have
+                    something to look back on when we're older.
+                  </p>
+                  <p>
+                    You know what, loveee? One thing I've realized these past
+                    months is that loving someone isn't only about knowing the
+                    big things about them. It's also about paying attention to
+                    the little things. The small details na sometimes even the
+                    person themselves doesn't notice. And I think I've slowly
+                    become someone who notices those things about you. I notice
+                    your little habits, the way you respond to certain things,
+                    the way your mood changes, the things that make you excited,
+                    and even the little things that you probably think I don't
+                    remember. HAHAHAHA. Pero if you ask me Dili basi nako
+                    matubag HAHAHAHAH
+                  </p>
+                  <p>
+                    Sometimes I remember something you mentioned before without
+                    you even realizing that I remembered it. Sometimes naa koy
+                    madungog or makita na maka remind nako nimo. And sometimes I
+                    find myself thinking about what you would say or how you
+                    would react to something. It's funny because I don't even
+                    intentionally do it. Nahimo nalang jud siya part sa akong
+                    everyday thoughts. And I hope you know na I want to continue
+                    knowing those little things about you. I don't want to know
+                    you only as my girlfriend. I want to know you as a person,
+                    as someone with her own thoughts, dreams, opinions,
+                    interests, and experiences.
+                  </p>
+                  <p>
+                    I want to know the things you don't usually talk about. The
+                    stories behind your favorite things and speaking of these I
+                    barely know any of your favorites, imong favorite color ra
+                    og favorite gulay og fruit and kana ra yati HHAHAHA tell me
+                    pud sa uban oii. Okay back to the topic. Umm the reasons why
+                    certain things matter to you, the memories that made you who
+                    you are today, and even the random thoughts that cross your
+                    mind when you're doing absolutely nothing. I want to know
+                    what makes you feel appreciated, what makes you feel
+                    understood, and what makes you feel comfortable. Kay para
+                    nako, there's always something new to discover about a
+                    person, no matter how long you've known them. And I want to
+                    keep discovering those things about you. Also what makes you
+                    loved HEHEH
+                  </p>
+                  <p>
+                    Another thing I want to appreciate is how you make me feel
+                    included in your life.I know na sometimes you have your own
+                    things to do, your own responsibilities, and your own world
+                    outside our relationship. And I actually love that you have
+                    those things. I love seeing you have your own interests,
+                    your own goals, and your own experiences. I don't want our
+                    relationship to become the only thing that matters in our
+                    lives because I also want to see us grow individually. I
+                    want to see you achieve the things you've been working hard
+                    for. I want to hear about your little victories, your
+                    achievements, and even the smallest progress that you're
+                    proud of.
+                  </p>
+                  <p>
+                    And please, love, never think na you have to choose between
+                    giving time to yourself and giving time to me. I want you to
+                    have time for your friends, family, studies, hobbies, and
+                    everything else that makes you happy. I want you to
+                    experience things, learn new things, and become the person
+                    you want to be. I'll always be happy to hear about those
+                    things. I want to be someone who celebrates your
+                    achievements without making everything about myself. Your
+                    happiness and growth matter to me, too.
+                  </p>
+                  <p>
+                    And if ever naa kay days na busy kaayo or dili ka ka reply
+                    immediately, I hope you never feel like you have to rush
+                    everything just because of me. I know we both have lives to
+                    live outside our conversations. Of course, mingawon gihapon
+                    ko nimo, duh. HAHAHAHAHA. Basin mangulit pa gani ko and mag
+                    send og unnecessary messages just to get your attention. But
+                    I think just a small reassurance that I'm still the one will
+                    be enough and I want you to know that I understand na there
+                    are times when other things need your attention. I want us
+                    to have a relationship where we can enjoy each other's
+                    company without feeling like we have to sacrifice everything
+                    else.
+                  </p>
+                  <p>
+                    Loveee, I also want to thank you for being patient with me.
+                    I know na naa koy mga times na lisod sabton akong thoughts,
+                    especially when I start overthinking something. Sometimes I
+                    have so many things running through my mind that even I
+                    don't know how to explain them properly. HAHAHAHA. And there
+                    are moments na I might ask questions, seek reassurance, or
+                    become quiet because I'm trying to understand what I'm
+                    feeling. I know dili always sayon dealing with that, and I
+                    appreciate you for being patient with me.
+                  </p>
+                  <p>
+                    I'm still learning how to handle my emotions better. I'm
+                    learning na dili tanan thoughts kinahanglan dayon hatagan og
+                    meaning, dili tanan silence means something is wrong, and
+                    dili tanan worries are things that will actually happen.
+                    Sometimes I just need to breathe, understand the situation,
+                    and communicate instead of allowing my imagination to make
+                    things more complicated than they actually are. HAHAHAHA. I
+                    don't want my overthinking to become something that makes
+                    you feel restricted or pressured. I want to be able to trust
+                    you while also learning to trust myself and the relationship
+                    we're building.
+                  </p>
+                  <p>
+                    And I hope you can also be patient with yourself, love. You
+                    don't have to understand everything immediately. You don't
+                    have to know exactly what you are feeling and what to do
+                    every time something happens, after all We all have
+                    different EQ and We're both still learning, and I think
+                    that's okay. I don't expect us to become perfect partners
+                    overnight. What matters to me is that we're willing to
+                    recognize our mistakes, learn from them, and make better
+                    choices next time.
+                  </p>
+                  <p>
+                    I hope you know that I don't only love the version of you
+                    that I get to see every day. I also want to understand the
+                    parts of you that you don't always show. The parts that are
+                    difficult to explain, the thoughts you keep to yourself
+                    sometimes, and the feelings that you might not know how to
+                    put into words. I know na dili nako mahibaw-an tanan about
+                    sa imoha, and I won't pretend that I can always understand
+                    what you're going through, because sometimes i just can't
+                    But I want to make an effort.
+                  </p>
+                  <p>
+                    If you have something bothering you, you can tell me. If you
+                    want to rant about something, I'll listen. If you want to
+                    share something that happened during your day, I'll be
+                    interested. If you want to talk about something completely
+                    random, then let's talk about it. And if there are moments
+                    when you don't know what to say, that's okay too. You don't
+                    always have to come to me with a complete explanation of
+                    what you're feeling.
+                  </p>
+                  <p>
+                    I want you to feel na you can be honest with me, even when
+                    the truth isn't necessarily something I want to hear. I
+                    would rather understand what's really happening than have us
+                    pretend that everything is okay when it isn't. I want us to
+                    be comfortable enough to express our thoughts without
+                    immediately worrying about how the other person might react.
+                    Of course, we still have to be considerate of each other's
+                    feelings, but I hope we never lose that willingness to
+                    communicate.
+                  </p>
+                  <p>
+                    And love, please remember na you are allowed to have bad
+                    days. You are allowed to be tired, to be frustrated, to have
+                    doubts about yourself, and to have moments when things don't
+                    go according to your plans. I don't want you to feel like
+                    you need to hide those things from me. You don't have to be
+                    sweet every second, you don't have to be happy all the time,
+                    and you definitely don't have to pretend that you're okay
+                    just to keep things peaceful between us. I want to know the
+                    real you, not just the version of you that thinks she has to
+                    make everyone happy.
+                  </p>
+                  <p>
+                    Also, I hope you never forget how proud I am of you. Even if
+                    I don't always say it, I really am. I know na naa kay things
+                    na ginapaningkamotan (use rako ani na word Kay Wala ragud),
+                    things na sometimes other people might not even notice. And
+                    I want you to know that your efforts matter. Even if things
+                    don't always turn out the way you wanted them to, that
+                    doesn't mean your efforts were wasted. I'm proud of you for
+                    continuing, for trying, and for showing up even on days when
+                    things aren't easy.
+                  </p>
+                  <p>
+                    I hope you don't become too hard on yourself whenever you
+                    make mistakes or whenever you feel like you're not doing
+                    enough. You are still growing, love. You still have so many
+                    things ahead of you, and you don't need to have everything
+                    figured out right now. I want to see you succeed, but I also
+                    want to see you enjoy the process. I want you to have
+                    memories outside of school, experiences that make you happy,
+                    and opportunities to discover what you're capable of.
+                  </p>
+                  <p>
+                    And when you achieve something, no matter how big or small,
+                    please tell me. I want to celebrate with you. I want to be
+                    one of the people who gets excited when something good
+                    happens to you. Duh, maybe I may look not excited but I'm
+                    excited on the inside HAHAHAHAHA. I want to hear your
+                    stories, your plans, and the things you're looking forward
+                    to. I want to see you become more confident in yourself and
+                    in the things you can do.
+                  </p>
+                  <p>
+                    Now, let's talk about us again. HAHAHAHAHA. I think one of
+                    the things I'm most grateful for is that I get to experience
+                    a kind of love where I can be myself. I don't have to
+                    constantly think of something impressive to say just to keep
+                    your attention. I can be random, annoying, dramatic, and
+                    sometimes completely nonsense, and somehow you still put up
+                    with me. HAHAHAHAHA. Thank you for that, by the way. Your
+                    patience deserves an award.
+                  </p>
+                  <p>
+                    But seriously, I love how our relationship has its own
+                    little world. We have our own jokes, our own ways of teasing
+                    each other, our own conversations that probably wouldn't
+                    make sense to other people. There are things that only we
+                    understand, and I think that's one of the things that make
+                    our relationship special. We have moments that might look
+                    ordinary to everyone else, but they mean something to us
+                    because we experienced them together.
+                  </p>
+                  <p>
+                    I hope we continue making those kinds of memories. Not
+                    necessarily grand or expensive ones, but moments that we'll
+                    remember because they made us happy. I want more random
+                    conversations, more laughter, more stories, more pictures,
+                    more little updates, and more moments where we get to enjoy
+                    each other's presence. I want us to have more experiences
+                    that we can look back on and say, "HAHAHAHA remember when we
+                    did that?" Tho I still wish the time will come where I can
+                    just go to your home and spend time with you there but it's
+                    okay HEHE
+                  </p>
+                  <p>
+                    And hopefully, someday, we'll have so many memories that we
+                    won't even know which one to talk about first. HAHAHAHAHA.
+                    Imagine lang, love. We'll have so many stories from
+                    different stages of our lives. From our school days to the
+                    time when we're already pursuing our own careers and
+                    responsibilities. From our younger selves who used to worry
+                    about small things to the versions of us who have learned so
+                    much along the way. I think that would be really nice. Maybe
+                    Ikaw lang makahimog story para sa atong mga grandchild Kay
+                    Ako Kay nakalimot na basi but maminaw gyapon ko HAHAHHA
+                  </p>
+                  <p>
+                    I also want to remind you that I will never want you to feel
+                    like you have to compete with anyone for my love. I know
+                    I've said similar things before, but I want to make it clear
+                    again. I chose you, and I'm happy with that choice. I don't
+                    need to look for someone else to make me realize what I
+                    already have. I don't want to entertain things that could
+                    disrespect what we have, and I want my actions to reflect
+                    the same love that I keep telling you about.
+                  </p>
+                  <p>
+                    I want you to feel secure not just because of my promises
+                    but because of the way I treat you. I know words are easy to
+                    say, and I don't want to rely on them alone. I want to show
+                    you through my consistency, honesty, respect, and effort. I
+                    want you to feel appreciated without having to ask for it
+                    every time. I want you to know that I take your feelings
+                    seriously and that I don't see your trust as something I can
+                    just take for granted.
+                  </p>
+                  <p>
+                    And I hope we both continue protecting what we have. Not by
+                    keeping each other away from the world, but by respecting
+                    the boundaries we've agreed on and being mindful of the
+                    decisions we make. I want our relationship to be something
+                    that gives us comfort and happiness, not something that
+                    makes either of us feel like we're losing ourselves.
+                  </p>
+                  <p>
+                    One thing I really look forward to is seeing how much we'll
+                    change as time passes. Kay right now, we're still figuring
+                    out a lot of things. We have school, responsibilities,
+                    personal goals, and so many uncertainties waiting ahead of
+                    us. There will probably be days when our schedules won't
+                    match, days when we have too much to do, and days when we'll
+                    have to adjust to new situations. But I hope we never forget
+                    to make room for each other in the middle of all those
+                    changes.
+                  </p>
+                  <p>
+                    I don't know exactly what the next months will look like. I
+                    don't know what challenges we'll encounter or what
+                    unexpected things might happen. But I hope we continue
+                    approaching those things as two people who are willing to
+                    understand each other. I don't want us to become afraid of
+                    change. I want us to grow, even if that means discovering
+                    new sides of ourselves that we haven't seen before.
+                  </p>
+                  <p>
+                    And if there comes a time when things become difficult, I
+                    hope we remember that we're on the same team. Dili kita
+                    kontra sa usag usa, love. We don't have to win every
+                    disagreement or prove who is more hurt. We can listen,
+                    explain, apologize, and find a way forward. I want us to
+                    solve problems together rather than make each other feel
+                    like the problem. I know we won't always have the same
+                    opinions, and that's completely normal. What's important is
+                    that we continue respecting each other even when we
+                    disagree.
+                  </p>
+                  <p>
+                    I want to keep learning how to love you in ways that you can
+                    actually feel. Not just in ways that I think are enough, but
+                    in ways that make you feel valued and understood. And I hope
+                    you can tell me those things, too. I don't want us to assume
+                    that the other person should automatically know everything.
+                    Let's keep telling each other what we need, what makes us
+                    happy, and what we can improve. I think there's always room
+                    for us to become better partners.
+                  </p>
+                  <p>
+                    And speaking of the future, my future wifeeeee, HAHAHAHAHA.
+                    Ambot jud nimo love, ikaw jud akong ma imagine whenever I
+                    think about having someone beside me in the future. Maybe
+                    Kay Ikaw rajud ang person na I see myself with, hayss but
+                    theres still fear sa akoa na maybe maging lesson rako and
+                    maybe gipa grow lang Tika for someone else hayss but I
+                    genuinely want it to be youu, I know na layo pa kaayo ta
+                    ana, and we still have so many things to accomplish
+                    individually. But I genuinely hope na someday, when we look
+                    back at this stage of our lives, we'll be happy that we got
+                    to experience it together.
+                  </p>
+                  <p>
+                    I want to see you achieve your dreams. I want to achieve
+                    mine, too. I want us to become people who are proud of
+                    themselves, people who have grown through their experiences,
+                    and people who have learned how to handle life with more
+                    maturity. And if we get to share those experiences with each
+                    other, then that would be something I'll always be grateful
+                    for.
+                  </p>
+                  <p>
+                    I don't want to rush anything. We have so much time to grow
+                    and so many things to learn. For now, I want us to enjoy
+                    being where we are. Let's make the most of our remaining
+                    school days, support each other through our
+                    responsibilities, and keep creating memories while we still
+                    have these opportunities. I want us to look forward to our
+                    future without forgetting to appreciate the present.
+                  </p>
+                  <p>
+                    And hopefully, when we finally reach those things we
+                    currently talk about, we'll still be able to look at each
+                    other with the same excitement. Maybe we'll be more mature,
+                    maybe our conversations will be different, and maybe we'll
+                    have more responsibilities than we do now. But I hope we
+                    never lose the habit of making each other laugh, asking
+                    about each other's day, and finding reasons to spend time
+                    together.
+                  </p>
+                  <p>
+                    I hope that even after years, I can still randomly message
+                    you just to tell you something unimportant. I hope I can
+                    still annoy you with my nonsense. I hope I can still make
+                    you laugh with the most ridiculous things. And I hope that
+                    even after knowing each other for so long, we'll continue
+                    being curious about each other's lives.
+                  </p>
+                  <p>
+                    Lastly, loveee, thank you for making these eleven months
+                    meaningful. Thank you for the time you've given me, the
+                    stories you've shared, the affection you've shown, and the
+                    memories we've created. Thank you for being part of my life
+                    and allowing me to be part of yours. Thank you for the
+                    little things that you might not even realize I appreciate.
+                    Thank you for making ordinary days feel a little more
+                    special just by being someone I get to share them with.
+                  </p>
+                  <p>
+                    I'm sorry for the times when I haven't expressed myself
+                    properly, for the moments when I could have understood you
+                    better, and for the times when my actions might not have
+                    matched what I wanted you to feel. I know I still have a lot
+                    to improve, and I don't want to pretend otherwise. But
+                    please know that I genuinely want to become better, not just
+                    for the sake of saying that I'm a good boyfriend, but
+                    because you deserve a relationship where you feel respected,
+                    appreciated, understood, and loved.
+                  </p>
+                  <p>
+                    I can't promise that I'll always know the right thing to say
+                    or that I'll never make mistakes. But I can promise that
+                    I'll keep learning, listening, and making an effort. I want
+                    to be someone who doesn't only show up when everything is
+                    happy and convenient. I want to be someone who is willing to
+                    understand you even when things are complicated. And I hope
+                    we both continue giving each other that kind of love.
+                  </p>
+                  <p>
+                    Eleven months down, and hopefully so many more to come. One
+                    month nalang mag one year nata, loveeeeee. I am genuinely
+                    excited for that day, but more than the number of months,
+                    I'm excited about all the ordinary days that we still get to
+                    spend together after it. I want more monthsaries, more
+                    anniversaries, more birthdays together, more random days,
+                    more memories, and more reasons to appreciate having you in
+                    my life.
+                  </p>
+                  <p>
+                    If there's one thing I want you to remember from this very
+                    long message HAHAHAHAHA, it's that I'm happy it's you. Out
+                    of all the people I could have met, I'm glad our paths
+                    crossed. I'm glad that I got to know you, that I developed
+                    feelings for you, and that we eventually became what we are
+                    today. I wouldn't want to replace the story we have with
+                    something else because this is our story, and I want to keep
+                    making it better with you.
+                  </p>
+                  <p>
+                    ILOVEEYOUUUUSOOMUUCHH and I want to go into details on what
+                    I loveee about youu but I feel that nahimo nako na and I'm
+                    sure you remember pud man, I also won't go into details
+                    about anything that happened Kay there are better times to
+                    talk about that. But I just want to say something because I
+                    don't know if you forgotten it but no matter what po I still
+                    want you to be beside even if you think I need space. It's
+                    always you I need, even if I'm having a bad day or Wala sa
+                    mood it's still youu I want, biskan pag Ikaw ang nay sala
+                    but I would still want you to beside. And why I'm saying
+                    this?? Kay tung Wala koy GANA I feel like you're giving me
+                    space even though what I only need was you to be right there
+                    with me and Maybe that contributed Kay Gina isip pud nako
+                    that you already know that Kay I always say pud mana but I
+                    also understand if you're going through something too.
+                  </p>
+                  <p>
+                    And love I want to be honest on what I feel, these couple
+                    days I'm becoming more worried and scared about losing you,
+                    but It's not because I don't trust you or anything but these
+                    days I feel the silence between us, idk what kind of silence
+                    kay I notice that these days wla kaau ka ga chat tapos kung
+                    mo chat man kay after so many hours then sa tiktok for
+                    streak purposes nalang ka ga send, tapos I notice pa na
+                    online ka but wala gyapon ka ni reply and even though I
+                    understand na maybe busy lang ka or wala ka sa mood, dili
+                    gyapon nako ma ano ang kana na feeling so yeah I'm feeling
+                    that maybe I'm slowly losing you, and ma think nko na basi
+                    ginakapoy naka, nawawalan nakag gana or basi ma guilty najud
+                    kag maau. I'm so sorry po for thinking this way haysss. I
+                    guess to be honest maybe I just needed to hear or read nga
+                    ako gyapon, maybe just a small reassurance is what I needed
+                    and I'm just to shy to ask for it. Sorry again for thinking
+                    like that lovee, but always remember that I loveee youu so
+                    much poo.
+                  </p>
+                  <p>
+                    Happy 11th monthsary again, my loveeeeee. Thank you for
+                    being my girlfriend, my favorite notification, my favorite
+                    person to annoy, and the girl who still gives me butterflies
+                    even after eleven months. HAHAHAHAHA. I LOVE YOU SOOOOO
+                    MUCHHHHH, MORE THAN I CAN PROBABLY EXPLAIN IN THIS ALREADY
+                    VERY LONG MESSAGE.
+                  </p>
+                  <p>
+                    One month nalang, myloveee. Another long message will See
+                    you again at our first year, and hopefully at all the years
+                    after that. Na para bang tradition HAHAHHAH
+                  </p>
+                  <p>
+                    I LOVE YOUUUUUU, MY LOVE, MY CRUSH, MY FAVORITE GIRL, MY
+                    BABYY, MY WORLD, MY ONE AND ONLY GIRL, MY BEST FRIEND, AND
+                    MY FUTURE WIFEEEEEE. ALWAYS IKAW AND IKAW RAJUD MWUAH
+                    MWUAHH😘😘😘
+                  </p>
+                </template>
+              </div>
             </div>
+          </div>
         </article>
-        <div class="letter-photo-frames" aria-label="Our 16 photos">
-        </div>
+        <div class="letter-photo-frames" aria-label="Our 16 photos"></div>
+      </div>
     </div>
-</div>
 
-<div id="photoOverlay" class="photo-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Expanded photo">
-    <article class="photo-letter">
-        <button id="closePhoto" class="photo-letter__close" type="button" aria-label="Close photo">×</button>
-         <img id="expandedPhoto" src="" alt="">
+    <div
+      id="photoOverlay"
+      class="photo-overlay"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Expanded photo"
+    >
+      <article class="photo-letter">
+        <button
+          id="closePhoto"
+          class="photo-letter__close"
+          type="button"
+          aria-label="Close photo"
+        >
+          ×
+        </button>
+        <img id="expandedPhoto" src="" alt="" />
         <div class="photo-caption-wrap">
-            <div id="photoCaption" class="photo-caption" contenteditable="true" role="textbox" aria-label="Write a note below this photo" spellcheck="true"></div>
+          <div
+            id="photoCaption"
+            class="photo-caption"
+            contenteditable="true"
+            role="textbox"
+            aria-label="Write a note below this photo"
+            spellcheck="true"
+          ></div>
         </div>
-    </article>
-</div>
-
-</body>
-
-    
+      </article>
+    </div>
+  </body>
+</html>
