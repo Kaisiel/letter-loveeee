@@ -186,10 +186,12 @@ mailButton.addEventListener("click", () => {
 });
 
 const letterEnvelope = document.querySelector(".letter-envelope");
+const letterTextTemplate = document.querySelector("#letterText");
 
 letterEnvelope.addEventListener("click", () => {
     if (letterEnvelope.disabled) return;
 
+    letterTextTemplate.replaceWith(letterTextTemplate.content.cloneNode(true));
     letterEnvelope.disabled = true;
     letterOverlay.classList.add("is-revealing");
     playNextQueuedTrack();
